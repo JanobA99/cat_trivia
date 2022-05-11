@@ -42,11 +42,10 @@ class _FactHistoryState extends State<FactHistory> {
                             catsModel.cats[index].createdAt == null
                                 ? ""
                                 : MediaQuery.of(context).alwaysUse24HourFormat
-                                    ? DateFormat("hh:mm a MMM d y").format(
-                                        DateTime.parse(
-                                            catsModel.cats[index].createdAt ??
-                                                ""))
-                                    : DateFormat("hh:mm MMM d y").format(
+                                    ? DateFormat("hh:mm MMM d y").format(
+                                DateTime.parse(
+                                    catsModel.cats[index].createdAt ??
+                                        "")) : DateFormat("hh:mm a MMM d y").format(
                                         DateTime.parse(
                                             catsModel.cats[index].createdAt ??
                                                 "")),
