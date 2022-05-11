@@ -28,13 +28,11 @@ class CatBloc extends Bloc<CatEvent, CatState> {
     _GetCat _getCat,
     Emitter<CatState> emit,
   ) async {
-    EasyLoading.show();
     final res = await _catRepo.getCat(_getCat.animalType, _getCat.amount);
     res.fold((l) async {
       EasyLoading.showError(l.message);
       return;
     }, (r) async {
-      EasyLoading.dismiss();
       return emit(state.copyWith(catModel: r));
     });
   }

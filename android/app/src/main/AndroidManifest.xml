@@ -3,7 +3,7 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="cat_trivia"
+        android:label="Cat Trivia"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

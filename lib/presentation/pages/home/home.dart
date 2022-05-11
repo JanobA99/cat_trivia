@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cat_trivia/application/cat_bloc/cat_bloc.dart';
 import 'package:cat_trivia/infrastructure/models/cat/cat_model.dart';
 import 'package:cat_trivia/presentation/component/custom_button.dart';
@@ -37,16 +38,20 @@ class _HomePageState extends State<HomePage> {
                       width: 1.sw,
                       child: Hero(
                           tag: cat.id ?? "${DateTime.now()}",
-                          child: Image(
-                            fit: BoxFit.cover,
-                            loadingBuilder: (context, t, _) =>
-                                Image.asset('assets/placeholder.png'),
-                            errorBuilder: (context, t, _) => const Center(
-                              child: Icon(Icons.error),
+                          child:
+                          CachedNetworkImage(
+                            imageUrl:  "https://cataas.com/cat?v=${cat.id}",
+                            imageBuilder: (context, imageProvider) => Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: imageProvider,
+                                    fit: BoxFit.cover,),
+                              ),
                             ),
-                            image: NetworkImage(
-                                "https://cataas.com/cat?v=${cat.id}"),
-                          )),
+                            placeholder: (context, url) =>Image.asset('assets/placeholder.png'),
+                            errorWidget: (context, url, error) => const Icon(Icons.error),
+                          ),
+                      ),
                     ),
                     Container(
                       child: Padding(
