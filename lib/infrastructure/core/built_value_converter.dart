@@ -3,7 +3,6 @@ import 'dart:convert';
 
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
-import 'package:cat_trivia/main.dart';
 import 'package:chopper/chopper.dart';
 
 import '../serializers/serializer.dart';
@@ -55,7 +54,6 @@ class ErrorMyConverter implements ErrorConverter{
   @override
   FutureOr<Response> convertError<Detail, PaymentResult>(Response response) {
     var body = response.body;
-    p(body.toString());
     if (body
         .toString()
         .length > 200) {

@@ -1,6 +1,5 @@
 import 'package:cat_trivia/application/cat_bloc/cat_bloc.dart';
 import 'package:cat_trivia/infrastructure/models/cat/cat_model.dart';
-import 'package:cat_trivia/main.dart';
 import 'package:cat_trivia/presentation/component/custom_button.dart';
 import 'package:cat_trivia/presentation/routes/routes.dart';
 import 'package:cat_trivia/presentation/styles/theme_warpper.dart';
@@ -20,7 +19,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return ThemeWrapper(builder: (context, colors, fonts, icons, _) {
-      p("MediaQuery.of(context).alwaysUse24HourFormat ${MediaQuery.of(context).alwaysUse24HourFormat}");
       return Scaffold(
         backgroundColor: colors.backgroundColor,
         body: BlocBuilder<CatBloc, CatState>(builder: (context, state) {

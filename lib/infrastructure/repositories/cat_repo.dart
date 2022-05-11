@@ -3,7 +3,6 @@ import 'package:cat_trivia/domain/cat/failures_cat.dart';
 import 'package:cat_trivia/infrastructure/apis/cat_apis.dart';
 import 'package:cat_trivia/infrastructure/core/exceptions.dart';
 import 'package:cat_trivia/infrastructure/models/cat/cat_model.dart';
-import 'package:cat_trivia/main.dart';
 import 'package:dartz/dartz.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -17,8 +16,6 @@ class CatRepo implements CatFacade {
       String animalType, int amount) async {
     try {
       final res = await _getCatService.getCat(animalType, amount);
-      p(res.body);
-      p(res.body is CatModel);
       if (res.isSuccessful) {
         assert(res.body != null);
         CatModel? catModel = CatModel.fromJson(res.bodyString);

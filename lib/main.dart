@@ -2,7 +2,6 @@ import 'package:cat_trivia/domain/common/app_init.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'presentation/pages/core/app_widget.dart';
 
@@ -25,8 +24,4 @@ void main() async {
   );
 }
 
-p(Object object) {
-  if (kDebugMode) {
-    print(object.toString());
-  }
-}
+
