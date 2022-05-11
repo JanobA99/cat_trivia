@@ -1,11 +1,12 @@
 import 'package:cat_trivia/application/cat_bloc/cat_bloc.dart';
 import 'package:cat_trivia/infrastructure/models/cat/cat_model.dart';
 import 'package:cat_trivia/presentation/component/custom_button.dart';
+import 'package:cat_trivia/presentation/routes/routes.dart';
 import 'package:cat_trivia/presentation/styles/theme_warpper.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -15,9 +16,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-
-
   @override
   Widget build(BuildContext context) {
     return ThemeWrapper(builder: (context, colors, fonts, icons, _) {
@@ -38,15 +36,17 @@ class _HomePageState extends State<HomePage> {
                       height: 1.sh - 220.h,
                       width: 1.sw,
                       child: Hero(
-                        tag: cat.id ?? "${DateTime.now()}",
-                        child:  FadeInImage.assetNetwork(
-                          placeholder: "assets/placeholder.png",
-                          placeholderCacheWidth: 1.sw.toInt(),
-                          placeholderFit: BoxFit.fitWidth,
-                          image: "https://cataas.com/cat",
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+                          tag: cat.id ?? "${DateTime.now()}",
+                          child: Image(
+                            fit: BoxFit.cover,
+                            loadingBuilder: (context, t, _) =>
+                                Image.asset('assets/placeholder.png'),
+                            errorBuilder: (context, t, _) => const Center(
+                              child: Icon(Icons.error),
+                            ),
+                            image: NetworkImage(
+                                "https://cataas.com/cat?v=${cat.id}"),
+                          )),
                     ),
                     Container(
                       child: Padding(
@@ -55,15 +55,41 @@ class _HomePageState extends State<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             CustomOutlinedButton(
-                              onPressed: () {},
-                              title: 'Add',
+                              onPressed: () {
+                                context.read<CatBloc>().add(CatEvent.getCat(
+                                    animalType: 'cat', amount: 1));
+                              },
+                              title: 'another_fact'.tr(),
                             ),
                             SizedBox(
                               height: 8.h,
                             ),
-                            CustomButton(
-                              onPressed: () {},
-                              title: 'Add',
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                SizedBox(
+                                  width: 1.sw/2.5,
+                                  child: CustomButton(
+                                    onPressed: () {
+                                      if(state.catsModel==null){
+                                        context.read<CatBloc>().add(CatEvent.getFactHistory());
+                                      }
+                                      Navigator.push(
+                                          context, Routes.getFactHistory(context), );
+                                    },
+                                    title: 'fact_history'.tr(),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 1.sw/2.5,
+                                  child: CustomButton(
+                                    onPressed: () {
+                                      context.read<CatBloc>().add(CatEvent.saveFact(catModel: state.catModel!));
+                                    },
+                                    title: 'save'.tr(),
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
@@ -99,7 +125,7 @@ class _HomePageState extends State<HomePage> {
                             mainAxisSize: MainAxisSize.max,
                             children: <Widget>[
                               Text(
-                                cat.type??"",
+                                cat.type ?? "",
                                 style: fonts.headline3.copyWith(
                                     color: colors.primary, fontSize: 24.sp),
                               ),
@@ -122,7 +148,7 @@ class _HomePageState extends State<HomePage> {
                             height: 8.h,
                           ),
                           Text(
-                            cat.text??"",
+                            cat.text ?? "",
                             style: fonts.subtitle1,
                             maxLines: 3,
                             overflow: TextOverflow.ellipsis,

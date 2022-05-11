@@ -81,7 +81,7 @@ class CustomButton extends StatelessWidget {
                       Style.blueIconShadow,
                     ]),
           child: Padding(
-            padding:  EdgeInsets.symmetric(vertical: verticalPadding.h, horizontal: 42.w),
+            padding:  EdgeInsets.symmetric(vertical: verticalPadding.h, horizontal: 8.w),
             child: Text(
               title,
               textAlign: TextAlign.center,

@@ -6,8 +6,52 @@ part of 'cat_model.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+Serializer<CatsModel> _$catsModelSerializer = new _$CatsModelSerializer();
 Serializer<CatModel> _$catModelSerializer = new _$CatModelSerializer();
 Serializer<Status> _$statusSerializer = new _$StatusSerializer();
+
+class _$CatsModelSerializer implements StructuredSerializer<CatsModel> {
+  @override
+  final Iterable<Type> types = const [CatsModel, _$CatsModel];
+  @override
+  final String wireName = 'CatsModel';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, CatsModel object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'cats',
+      serializers.serialize(object.cats,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(CatModel)])),
+    ];
+
+    return result;
+  }
+
+  @override
+  CatsModel deserialize(Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new CatsModelBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'cats':
+          result.cats.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(CatModel)]))!
+              as BuiltList<Object?>);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
 
 class _$CatModelSerializer implements StructuredSerializer<CatModel> {
   @override
@@ -211,6 +255,95 @@ class _$StatusSerializer implements StructuredSerializer<Status> {
     }
 
     return result.build();
+  }
+}
+
+class _$CatsModel extends CatsModel {
+  @override
+  final BuiltList<CatModel> cats;
+
+  factory _$CatsModel([void Function(CatsModelBuilder)? updates]) =>
+      (new CatsModelBuilder()..update(updates))._build();
+
+  _$CatsModel._({required this.cats}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(cats, 'CatsModel', 'cats');
+  }
+
+  @override
+  CatsModel rebuild(void Function(CatsModelBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  CatsModelBuilder toBuilder() => new CatsModelBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is CatsModel && cats == other.cats;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc(0, cats.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('CatsModel')..add('cats', cats))
+        .toString();
+  }
+}
+
+class CatsModelBuilder implements Builder<CatsModel, CatsModelBuilder> {
+  _$CatsModel? _$v;
+
+  ListBuilder<CatModel>? _cats;
+  ListBuilder<CatModel> get cats =>
+      _$this._cats ??= new ListBuilder<CatModel>();
+  set cats(ListBuilder<CatModel>? cats) => _$this._cats = cats;
+
+  CatsModelBuilder();
+
+  CatsModelBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _cats = $v.cats.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(CatsModel other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$CatsModel;
+  }
+
+  @override
+  void update(void Function(CatsModelBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  CatsModel build() => _build();
+
+  _$CatsModel _build() {
+    _$CatsModel _$result;
+    try {
+      _$result = _$v ?? new _$CatsModel._(cats: cats.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'cats';
+        cats.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'CatsModel', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
   }
 }
 

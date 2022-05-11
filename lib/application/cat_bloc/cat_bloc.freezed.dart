@@ -24,6 +24,16 @@ class _$CatEventTearOff {
       amount: amount,
     );
   }
+
+  _SaveFact saveFact({required CatModel catModel}) {
+    return _SaveFact(
+      catModel: catModel,
+    );
+  }
+
+  _GetFactHistory getFactHistory() {
+    return _GetFactHistory();
+  }
 }
 
 /// @nodoc
@@ -31,44 +41,49 @@ const $CatEvent = _$CatEventTearOff();
 
 /// @nodoc
 mixin _$CatEvent {
-  String get animalType => throw _privateConstructorUsedError;
-  int get amount => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String animalType, int amount) getCat,
+    required TResult Function(CatModel catModel) saveFact,
+    required TResult Function() getFactHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String animalType, int amount)? getCat,
+    TResult Function(CatModel catModel)? saveFact,
+    TResult Function()? getFactHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String animalType, int amount)? getCat,
+    TResult Function(CatModel catModel)? saveFact,
+    TResult Function()? getFactHistory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetCat value) getCat,
+    required TResult Function(_SaveFact value) saveFact,
+    required TResult Function(_GetFactHistory value) getFactHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetCat value)? getCat,
+    TResult Function(_SaveFact value)? saveFact,
+    TResult Function(_GetFactHistory value)? getFactHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetCat value)? getCat,
+    TResult Function(_SaveFact value)? saveFact,
+    TResult Function(_GetFactHistory value)? getFactHistory,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $CatEventCopyWith<CatEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -76,7 +91,6 @@ mixin _$CatEvent {
 abstract class $CatEventCopyWith<$Res> {
   factory $CatEventCopyWith(CatEvent value, $Res Function(CatEvent) then) =
       _$CatEventCopyWithImpl<$Res>;
-  $Res call({String animalType, int amount});
 }
 
 /// @nodoc
@@ -86,30 +100,12 @@ class _$CatEventCopyWithImpl<$Res> implements $CatEventCopyWith<$Res> {
   final CatEvent _value;
   // ignore: unused_field
   final $Res Function(CatEvent) _then;
-
-  @override
-  $Res call({
-    Object? animalType = freezed,
-    Object? amount = freezed,
-  }) {
-    return _then(_value.copyWith(
-      animalType: animalType == freezed
-          ? _value.animalType
-          : animalType // ignore: cast_nullable_to_non_nullable
-              as String,
-      amount: amount == freezed
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class _$GetCatCopyWith<$Res> implements $CatEventCopyWith<$Res> {
+abstract class _$GetCatCopyWith<$Res> {
   factory _$GetCatCopyWith(_GetCat value, $Res Function(_GetCat) then) =
       __$GetCatCopyWithImpl<$Res>;
-  @override
   $Res call({String animalType, int amount});
 }
 
@@ -180,6 +176,8 @@ class _$_GetCat implements _GetCat {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String animalType, int amount) getCat,
+    required TResult Function(CatModel catModel) saveFact,
+    required TResult Function() getFactHistory,
   }) {
     return getCat(animalType, amount);
   }
@@ -188,6 +186,8 @@ class _$_GetCat implements _GetCat {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String animalType, int amount)? getCat,
+    TResult Function(CatModel catModel)? saveFact,
+    TResult Function()? getFactHistory,
   }) {
     return getCat?.call(animalType, amount);
   }
@@ -196,6 +196,8 @@ class _$_GetCat implements _GetCat {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String animalType, int amount)? getCat,
+    TResult Function(CatModel catModel)? saveFact,
+    TResult Function()? getFactHistory,
     required TResult orElse(),
   }) {
     if (getCat != null) {
@@ -208,6 +210,8 @@ class _$_GetCat implements _GetCat {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetCat value) getCat,
+    required TResult Function(_SaveFact value) saveFact,
+    required TResult Function(_GetFactHistory value) getFactHistory,
   }) {
     return getCat(this);
   }
@@ -216,6 +220,8 @@ class _$_GetCat implements _GetCat {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetCat value)? getCat,
+    TResult Function(_SaveFact value)? saveFact,
+    TResult Function(_GetFactHistory value)? getFactHistory,
   }) {
     return getCat?.call(this);
   }
@@ -224,6 +230,8 @@ class _$_GetCat implements _GetCat {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetCat value)? getCat,
+    TResult Function(_SaveFact value)? saveFact,
+    TResult Function(_GetFactHistory value)? getFactHistory,
     required TResult orElse(),
   }) {
     if (getCat != null) {
@@ -237,22 +245,267 @@ abstract class _GetCat implements CatEvent {
   factory _GetCat({required String animalType, required int amount}) =
       _$_GetCat;
 
-  @override
   String get animalType;
-  @override
   int get amount;
-  @override
   @JsonKey(ignore: true)
   _$GetCatCopyWith<_GetCat> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$SaveFactCopyWith<$Res> {
+  factory _$SaveFactCopyWith(_SaveFact value, $Res Function(_SaveFact) then) =
+      __$SaveFactCopyWithImpl<$Res>;
+  $Res call({CatModel catModel});
+}
+
+/// @nodoc
+class __$SaveFactCopyWithImpl<$Res> extends _$CatEventCopyWithImpl<$Res>
+    implements _$SaveFactCopyWith<$Res> {
+  __$SaveFactCopyWithImpl(_SaveFact _value, $Res Function(_SaveFact) _then)
+      : super(_value, (v) => _then(v as _SaveFact));
+
+  @override
+  _SaveFact get _value => super._value as _SaveFact;
+
+  @override
+  $Res call({
+    Object? catModel = freezed,
+  }) {
+    return _then(_SaveFact(
+      catModel: catModel == freezed
+          ? _value.catModel
+          : catModel // ignore: cast_nullable_to_non_nullable
+              as CatModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SaveFact implements _SaveFact {
+  _$_SaveFact({required this.catModel});
+
+  @override
+  final CatModel catModel;
+
+  @override
+  String toString() {
+    return 'CatEvent.saveFact(catModel: $catModel)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _SaveFact &&
+            const DeepCollectionEquality().equals(other.catModel, catModel));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(catModel));
+
+  @JsonKey(ignore: true)
+  @override
+  _$SaveFactCopyWith<_SaveFact> get copyWith =>
+      __$SaveFactCopyWithImpl<_SaveFact>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String animalType, int amount) getCat,
+    required TResult Function(CatModel catModel) saveFact,
+    required TResult Function() getFactHistory,
+  }) {
+    return saveFact(catModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String animalType, int amount)? getCat,
+    TResult Function(CatModel catModel)? saveFact,
+    TResult Function()? getFactHistory,
+  }) {
+    return saveFact?.call(catModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String animalType, int amount)? getCat,
+    TResult Function(CatModel catModel)? saveFact,
+    TResult Function()? getFactHistory,
+    required TResult orElse(),
+  }) {
+    if (saveFact != null) {
+      return saveFact(catModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetCat value) getCat,
+    required TResult Function(_SaveFact value) saveFact,
+    required TResult Function(_GetFactHistory value) getFactHistory,
+  }) {
+    return saveFact(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_GetCat value)? getCat,
+    TResult Function(_SaveFact value)? saveFact,
+    TResult Function(_GetFactHistory value)? getFactHistory,
+  }) {
+    return saveFact?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetCat value)? getCat,
+    TResult Function(_SaveFact value)? saveFact,
+    TResult Function(_GetFactHistory value)? getFactHistory,
+    required TResult orElse(),
+  }) {
+    if (saveFact != null) {
+      return saveFact(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SaveFact implements CatEvent {
+  factory _SaveFact({required CatModel catModel}) = _$_SaveFact;
+
+  CatModel get catModel;
+  @JsonKey(ignore: true)
+  _$SaveFactCopyWith<_SaveFact> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$GetFactHistoryCopyWith<$Res> {
+  factory _$GetFactHistoryCopyWith(
+          _GetFactHistory value, $Res Function(_GetFactHistory) then) =
+      __$GetFactHistoryCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$GetFactHistoryCopyWithImpl<$Res> extends _$CatEventCopyWithImpl<$Res>
+    implements _$GetFactHistoryCopyWith<$Res> {
+  __$GetFactHistoryCopyWithImpl(
+      _GetFactHistory _value, $Res Function(_GetFactHistory) _then)
+      : super(_value, (v) => _then(v as _GetFactHistory));
+
+  @override
+  _GetFactHistory get _value => super._value as _GetFactHistory;
+}
+
+/// @nodoc
+
+class _$_GetFactHistory implements _GetFactHistory {
+  _$_GetFactHistory();
+
+  @override
+  String toString() {
+    return 'CatEvent.getFactHistory()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _GetFactHistory);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String animalType, int amount) getCat,
+    required TResult Function(CatModel catModel) saveFact,
+    required TResult Function() getFactHistory,
+  }) {
+    return getFactHistory();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String animalType, int amount)? getCat,
+    TResult Function(CatModel catModel)? saveFact,
+    TResult Function()? getFactHistory,
+  }) {
+    return getFactHistory?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String animalType, int amount)? getCat,
+    TResult Function(CatModel catModel)? saveFact,
+    TResult Function()? getFactHistory,
+    required TResult orElse(),
+  }) {
+    if (getFactHistory != null) {
+      return getFactHistory();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetCat value) getCat,
+    required TResult Function(_SaveFact value) saveFact,
+    required TResult Function(_GetFactHistory value) getFactHistory,
+  }) {
+    return getFactHistory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_GetCat value)? getCat,
+    TResult Function(_SaveFact value)? saveFact,
+    TResult Function(_GetFactHistory value)? getFactHistory,
+  }) {
+    return getFactHistory?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetCat value)? getCat,
+    TResult Function(_SaveFact value)? saveFact,
+    TResult Function(_GetFactHistory value)? getFactHistory,
+    required TResult orElse(),
+  }) {
+    if (getFactHistory != null) {
+      return getFactHistory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetFactHistory implements CatEvent {
+  factory _GetFactHistory() = _$_GetFactHistory;
 }
 
 /// @nodoc
 class _$CatStateTearOff {
   const _$CatStateTearOff();
 
-  _SignInState call({CatModel? catModel = null}) {
+  _SignInState call({CatModel? catModel = null, CatsModel? catsModel = null}) {
     return _SignInState(
       catModel: catModel,
+      catsModel: catsModel,
     );
   }
 }
@@ -263,6 +516,7 @@ const $CatState = _$CatStateTearOff();
 /// @nodoc
 mixin _$CatState {
   CatModel? get catModel => throw _privateConstructorUsedError;
+  CatsModel? get catsModel => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CatStateCopyWith<CatState> get copyWith =>
@@ -273,7 +527,7 @@ mixin _$CatState {
 abstract class $CatStateCopyWith<$Res> {
   factory $CatStateCopyWith(CatState value, $Res Function(CatState) then) =
       _$CatStateCopyWithImpl<$Res>;
-  $Res call({CatModel? catModel});
+  $Res call({CatModel? catModel, CatsModel? catsModel});
 }
 
 /// @nodoc
@@ -287,12 +541,17 @@ class _$CatStateCopyWithImpl<$Res> implements $CatStateCopyWith<$Res> {
   @override
   $Res call({
     Object? catModel = freezed,
+    Object? catsModel = freezed,
   }) {
     return _then(_value.copyWith(
       catModel: catModel == freezed
           ? _value.catModel
           : catModel // ignore: cast_nullable_to_non_nullable
               as CatModel?,
+      catsModel: catsModel == freezed
+          ? _value.catsModel
+          : catsModel // ignore: cast_nullable_to_non_nullable
+              as CatsModel?,
     ));
   }
 }
@@ -303,7 +562,7 @@ abstract class _$SignInStateCopyWith<$Res> implements $CatStateCopyWith<$Res> {
           _SignInState value, $Res Function(_SignInState) then) =
       __$SignInStateCopyWithImpl<$Res>;
   @override
-  $Res call({CatModel? catModel});
+  $Res call({CatModel? catModel, CatsModel? catsModel});
 }
 
 /// @nodoc
@@ -319,12 +578,17 @@ class __$SignInStateCopyWithImpl<$Res> extends _$CatStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? catModel = freezed,
+    Object? catsModel = freezed,
   }) {
     return _then(_SignInState(
       catModel: catModel == freezed
           ? _value.catModel
           : catModel // ignore: cast_nullable_to_non_nullable
               as CatModel?,
+      catsModel: catsModel == freezed
+          ? _value.catsModel
+          : catsModel // ignore: cast_nullable_to_non_nullable
+              as CatsModel?,
     ));
   }
 }
@@ -332,15 +596,18 @@ class __$SignInStateCopyWithImpl<$Res> extends _$CatStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SignInState implements _SignInState {
-  const _$_SignInState({this.catModel = null});
+  const _$_SignInState({this.catModel = null, this.catsModel = null});
 
   @JsonKey()
   @override
   final CatModel? catModel;
+  @JsonKey()
+  @override
+  final CatsModel? catsModel;
 
   @override
   String toString() {
-    return 'CatState(catModel: $catModel)';
+    return 'CatState(catModel: $catModel, catsModel: $catsModel)';
   }
 
   @override
@@ -348,12 +615,15 @@ class _$_SignInState implements _SignInState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _SignInState &&
-            const DeepCollectionEquality().equals(other.catModel, catModel));
+            const DeepCollectionEquality().equals(other.catModel, catModel) &&
+            const DeepCollectionEquality().equals(other.catsModel, catsModel));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(catModel));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(catModel),
+      const DeepCollectionEquality().hash(catsModel));
 
   @JsonKey(ignore: true)
   @override
@@ -362,10 +632,13 @@ class _$_SignInState implements _SignInState {
 }
 
 abstract class _SignInState implements CatState {
-  const factory _SignInState({CatModel? catModel}) = _$_SignInState;
+  const factory _SignInState({CatModel? catModel, CatsModel? catsModel}) =
+      _$_SignInState;
 
   @override
   CatModel? get catModel;
+  @override
+  CatsModel? get catsModel;
   @override
   @JsonKey(ignore: true)
   _$SignInStateCopyWith<_SignInState> get copyWith =>

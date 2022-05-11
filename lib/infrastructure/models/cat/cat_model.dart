@@ -3,8 +3,27 @@ import 'dart:convert';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:cat_trivia/infrastructure/serializers/serializer.dart';
-
+import 'package:built_collection/built_collection.dart';
 part 'cat_model.g.dart';
+
+abstract class CatsModel implements Built<CatsModel, CatsModelBuilder> {
+  BuiltList<CatModel> get cats;
+
+  CatsModel._();
+  factory CatsModel([Function(CatsModelBuilder b) updates]) = _$CatsModel;
+
+  String toJson() {
+    return json.encode(serializers.serializeWith(CatsModel.serializer, this));
+  }
+
+  static CatsModel? fromJson(String jsonString) {
+    return serializers.deserializeWith(
+        CatsModel.serializer, json.decode(jsonString));
+  }
+
+  static Serializer<CatsModel> get serializer => _$catsModelSerializer;
+}
+
 
 abstract class CatModel implements Built<CatModel, CatModelBuilder> {
   CatModel._();
@@ -34,6 +53,10 @@ abstract class CatModel implements Built<CatModel, CatModelBuilder> {
   @BuiltValueField(wireName: 'user')
   String? get user;
 
+  String toJson() {
+    return json.encode(serializers.serializeWith(CatModel.serializer, this));
+  }
+
   static CatModel? fromJson(String jsonString) {
     return serializers.deserializeWith(
         CatModel.serializer, json.decode(jsonString));
@@ -51,6 +74,9 @@ abstract class Status implements Built<Status, StatusBuilder> {
   bool? get verified;
   @BuiltValueField(wireName: 'sentCount')
   int? get sentCount;
+  String toJson() {
+    return json.encode(serializers.serializeWith(Status.serializer, this));
+  }
 
   static Status? fromJson(String jsonString) {
     return serializers.deserializeWith(
