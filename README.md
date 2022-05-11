@@ -6,5 +6,5 @@ Cat Trivia project.
 
 This project is a starting point for a Flutter application.
 
-
+![simple](assets/screenshot/basic.gif)
 
