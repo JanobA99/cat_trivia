@@ -1,0 +1,523 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'cat_model.dart';
+
+// **************************************************************************
+// BuiltValueGenerator
+// **************************************************************************
+
+Serializer<CatModel> _$catModelSerializer = new _$CatModelSerializer();
+Serializer<Status> _$statusSerializer = new _$StatusSerializer();
+
+class _$CatModelSerializer implements StructuredSerializer<CatModel> {
+  @override
+  final Iterable<Type> types = const [CatModel, _$CatModel];
+  @override
+  final String wireName = 'CatModel';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, CatModel object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.status;
+    if (value != null) {
+      result
+        ..add('status')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(Status)));
+    }
+    value = object.id;
+    if (value != null) {
+      result
+        ..add('_id')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.v;
+    if (value != null) {
+      result
+        ..add('__v')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.text;
+    if (value != null) {
+      result
+        ..add('text')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.source;
+    if (value != null) {
+      result
+        ..add('source')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.updatedAt;
+    if (value != null) {
+      result
+        ..add('updatedAt')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.type;
+    if (value != null) {
+      result
+        ..add('type')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.createdAt;
+    if (value != null) {
+      result
+        ..add('createdAt')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.deleted;
+    if (value != null) {
+      result
+        ..add('deleted')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.used;
+    if (value != null) {
+      result
+        ..add('used')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.user;
+    if (value != null) {
+      result
+        ..add('user')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  CatModel deserialize(Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new CatModelBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'status':
+          result.status.replace(serializers.deserialize(value,
+              specifiedType: const FullType(Status))! as Status);
+          break;
+        case '_id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case '__v':
+          result.v = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'text':
+          result.text = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'source':
+          result.source = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'updatedAt':
+          result.updatedAt = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'type':
+          result.type = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'createdAt':
+          result.createdAt = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'deleted':
+          result.deleted = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'used':
+          result.used = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'user':
+          result.user = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$StatusSerializer implements StructuredSerializer<Status> {
+  @override
+  final Iterable<Type> types = const [Status, _$Status];
+  @override
+  final String wireName = 'Status';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, Status object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.verified;
+    if (value != null) {
+      result
+        ..add('verified')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.sentCount;
+    if (value != null) {
+      result
+        ..add('sentCount')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    return result;
+  }
+
+  @override
+  Status deserialize(Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new StatusBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'verified':
+          result.verified = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'sentCount':
+          result.sentCount = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$CatModel extends CatModel {
+  @override
+  final Status? status;
+  @override
+  final String? id;
+  @override
+  final int? v;
+  @override
+  final String? text;
+  @override
+  final String? source;
+  @override
+  final String? updatedAt;
+  @override
+  final String? type;
+  @override
+  final String? createdAt;
+  @override
+  final bool? deleted;
+  @override
+  final bool? used;
+  @override
+  final String? user;
+
+  factory _$CatModel([void Function(CatModelBuilder)? updates]) =>
+      (new CatModelBuilder()..update(updates))._build();
+
+  _$CatModel._(
+      {this.status,
+      this.id,
+      this.v,
+      this.text,
+      this.source,
+      this.updatedAt,
+      this.type,
+      this.createdAt,
+      this.deleted,
+      this.used,
+      this.user})
+      : super._();
+
+  @override
+  CatModel rebuild(void Function(CatModelBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  CatModelBuilder toBuilder() => new CatModelBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is CatModel &&
+        status == other.status &&
+        id == other.id &&
+        v == other.v &&
+        text == other.text &&
+        source == other.source &&
+        updatedAt == other.updatedAt &&
+        type == other.type &&
+        createdAt == other.createdAt &&
+        deleted == other.deleted &&
+        used == other.used &&
+        user == other.user;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc(
+        $jc(
+            $jc(
+                $jc(
+                    $jc(
+                        $jc(
+                            $jc(
+                                $jc(
+                                    $jc(
+                                        $jc($jc(0, status.hashCode),
+                                            id.hashCode),
+                                        v.hashCode),
+                                    text.hashCode),
+                                source.hashCode),
+                            updatedAt.hashCode),
+                        type.hashCode),
+                    createdAt.hashCode),
+                deleted.hashCode),
+            used.hashCode),
+        user.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('CatModel')
+          ..add('status', status)
+          ..add('id', id)
+          ..add('v', v)
+          ..add('text', text)
+          ..add('source', source)
+          ..add('updatedAt', updatedAt)
+          ..add('type', type)
+          ..add('createdAt', createdAt)
+          ..add('deleted', deleted)
+          ..add('used', used)
+          ..add('user', user))
+        .toString();
+  }
+}
+
+class CatModelBuilder implements Builder<CatModel, CatModelBuilder> {
+  _$CatModel? _$v;
+
+  StatusBuilder? _status;
+  StatusBuilder get status => _$this._status ??= new StatusBuilder();
+  set status(StatusBuilder? status) => _$this._status = status;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  int? _v;
+  int? get v => _$this._v;
+  set v(int? v) => _$this._v = v;
+
+  String? _text;
+  String? get text => _$this._text;
+  set text(String? text) => _$this._text = text;
+
+  String? _source;
+  String? get source => _$this._source;
+  set source(String? source) => _$this._source = source;
+
+  String? _updatedAt;
+  String? get updatedAt => _$this._updatedAt;
+  set updatedAt(String? updatedAt) => _$this._updatedAt = updatedAt;
+
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
+
+  String? _createdAt;
+  String? get createdAt => _$this._createdAt;
+  set createdAt(String? createdAt) => _$this._createdAt = createdAt;
+
+  bool? _deleted;
+  bool? get deleted => _$this._deleted;
+  set deleted(bool? deleted) => _$this._deleted = deleted;
+
+  bool? _used;
+  bool? get used => _$this._used;
+  set used(bool? used) => _$this._used = used;
+
+  String? _user;
+  String? get user => _$this._user;
+  set user(String? user) => _$this._user = user;
+
+  CatModelBuilder();
+
+  CatModelBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _status = $v.status?.toBuilder();
+      _id = $v.id;
+      _v = $v.v;
+      _text = $v.text;
+      _source = $v.source;
+      _updatedAt = $v.updatedAt;
+      _type = $v.type;
+      _createdAt = $v.createdAt;
+      _deleted = $v.deleted;
+      _used = $v.used;
+      _user = $v.user;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(CatModel other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$CatModel;
+  }
+
+  @override
+  void update(void Function(CatModelBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  CatModel build() => _build();
+
+  _$CatModel _build() {
+    _$CatModel _$result;
+    try {
+      _$result = _$v ??
+          new _$CatModel._(
+              status: _status?.build(),
+              id: id,
+              v: v,
+              text: text,
+              source: source,
+              updatedAt: updatedAt,
+              type: type,
+              createdAt: createdAt,
+              deleted: deleted,
+              used: used,
+              user: user);
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'status';
+        _status?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'CatModel', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$Status extends Status {
+  @override
+  final bool? verified;
+  @override
+  final int? sentCount;
+
+  factory _$Status([void Function(StatusBuilder)? updates]) =>
+      (new StatusBuilder()..update(updates))._build();
+
+  _$Status._({this.verified, this.sentCount}) : super._();
+
+  @override
+  Status rebuild(void Function(StatusBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  StatusBuilder toBuilder() => new StatusBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is Status &&
+        verified == other.verified &&
+        sentCount == other.sentCount;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc($jc(0, verified.hashCode), sentCount.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('Status')
+          ..add('verified', verified)
+          ..add('sentCount', sentCount))
+        .toString();
+  }
+}
+
+class StatusBuilder implements Builder<Status, StatusBuilder> {
+  _$Status? _$v;
+
+  bool? _verified;
+  bool? get verified => _$this._verified;
+  set verified(bool? verified) => _$this._verified = verified;
+
+  int? _sentCount;
+  int? get sentCount => _$this._sentCount;
+  set sentCount(int? sentCount) => _$this._sentCount = sentCount;
+
+  StatusBuilder();
+
+  StatusBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _verified = $v.verified;
+      _sentCount = $v.sentCount;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(Status other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$Status;
+  }
+
+  @override
+  void update(void Function(StatusBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  Status build() => _build();
+
+  _$Status _build() {
+    final _$result =
+        _$v ?? new _$Status._(verified: verified, sentCount: sentCount);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

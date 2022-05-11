@@ -1,4 +1,6 @@
-import 'package:cat_trivia/application/sign_in/sign_in_bloc.dart';
+import 'package:cat_trivia/application/cat_bloc/cat_bloc.dart';
+import 'package:cat_trivia/infrastructure/apis/cat_apis.dart';
+import 'package:cat_trivia/infrastructure/repositories/cat_repo.dart';
 import 'package:cat_trivia/infrastructure/services/connectivity.dart';
 import 'package:cat_trivia/presentation/pages/core/no_connection.dart';
 import 'package:cat_trivia/presentation/pages/core/splash_screen.dart';
@@ -30,11 +32,9 @@ class _HomeControlState extends State<HomeControl> {
           if (snap.hasData || snap.connectionState == ConnectionState.done) {
             return snap.data?[0] != ConnectivityResult.none
                 ? BlocProvider(
-                create: (_) => SignInBloc(),
-                child: const HomePage(
-
-                )
-            )
+                    create: (_) => CatBloc(CatRepo(GetCatService.create()))
+                      ..add(CatEvent.getCat(animalType: "cat", amount: 1)),
+                    child: const HomePage())
                 : const NoConnection();
           } else {
             return const SplashScreen();
