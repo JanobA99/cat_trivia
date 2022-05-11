@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                                     fit: BoxFit.cover,),
                               ),
                             ),
-                            placeholder: (context, url) =>Image.asset('assets/placeholder.png'),
+                            placeholder: (context, url) =>const Center(child: CircularProgressIndicator.adaptive()),
                             errorWidget: (context, url, error) => const Icon(Icons.error),
                           ),
                       ),

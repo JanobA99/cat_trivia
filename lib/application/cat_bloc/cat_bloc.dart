@@ -28,11 +28,13 @@ class CatBloc extends Bloc<CatEvent, CatState> {
     _GetCat _getCat,
     Emitter<CatState> emit,
   ) async {
+    EasyLoading.show();
     final res = await _catRepo.getCat(_getCat.animalType, _getCat.amount);
     res.fold((l) async {
       EasyLoading.showError(l.message);
       return;
     }, (r) async {
+      EasyLoading.dismiss();
       return emit(state.copyWith(catModel: r));
     });
   }
@@ -41,8 +43,8 @@ class CatBloc extends Bloc<CatEvent, CatState> {
     _SaveFact _saveFact,
     Emitter<CatState> emit,
   ) async {
-    var box = await Hive.openBox('myBox');
     EasyLoading.show();
+    var box = await Hive.openBox('myBox');
     String? name;
     CatsModel? catsModel;
     name = await box.get("saved_cats");

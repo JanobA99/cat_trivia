@@ -26,7 +26,10 @@ class _FactHistoryState extends State<FactHistory> {
           ),
           body: BlocBuilder<CatBloc, CatState>(builder: (context, state) {
             if (state.catsModel == null) {
-              return const SizedBox();
+              return Center(child: Text(
+                "no_data".tr(),
+                style: fonts.subtitle2,
+              ));
             } else {
               CatsModel catsModel = state.catsModel!;
               return ListView.builder(
